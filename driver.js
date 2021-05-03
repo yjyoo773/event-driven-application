@@ -10,7 +10,7 @@ function pickup(payload){
         event.emit('in-transit',payload)
     },1000)
     setTimeout(()=>{
-        console.log('DELIVERED')
+        console.log(`DRIVER: delivered ${payload.orderId}`)
         event.emit('delivered',payload)
     },3000)
 }
