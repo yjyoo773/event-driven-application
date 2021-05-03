@@ -21,5 +21,3 @@ setInterval(()=>{
     }
     event.emit('pickup',newOrder)
 },5000)
-
-tgtt
