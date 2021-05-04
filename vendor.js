@@ -2,7 +2,7 @@
 
 const faker = require('faker')
 
-const event = require('./event.js')
+// const event = require('./event.js')
 
 const io = require('socket.io-client')
 const HOST = process.env.HOST || 'http://localhost:3000'

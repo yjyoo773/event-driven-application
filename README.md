@@ -11,11 +11,12 @@
 - [front-end application](http://xyz.com) (when applicable) -->
 N/A
 ### Setup
-- Packages needed for this application is `faker`
+Packages needed for this application is 
+- `faker`
+- `socket.io`
+- `socket.io-client`
 
 #### `.env` requirements (when applicable)
-
-- N/A
 <!-- i.e.
 
 - `PORT` - Port Number
@@ -23,7 +24,8 @@ N/A
 
 #### How to initialize/run your application (where applicable)
 
-- In order to start the application run `node caps.js` on the terminal
+- In order to start the application run `node caps.js` on the terminal to start the server side
+- run `node vendor.js` and `node driver.js` on seperate terminals
 
 #### Tests
 <!-- 

@@ -1,9 +1,6 @@
 "use strict";
 
-const event = require("./event.js");
 
-// require("./driver");
-// require("./vendor");
 
 const PORT = process.env.PORT || 3000;
 const io = require("socket.io")(PORT);
@@ -41,6 +38,12 @@ caps.on("connection", (socket) => {
     caps.emit("delivered", payload);
   });
 });
+
+// const event = require("./event.js");
+
+// require("./driver");
+// require("./vendor");
+
 
 // event.on('pickup',payload =>{
 //     let date = new Date()

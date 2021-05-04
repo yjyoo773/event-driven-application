@@ -8,20 +8,7 @@ const HOST = process.env.HOST || 'http://localhost:3000'
 const capsConnection = io.connect(`${HOST}/caps`)
 
 
-// event.on('pickup',pickup)
 capsConnection.on('pickup',pickupHandler)
-
-
-// function pickup(payload){
-//     setTimeout(()=>{
-//         console.log(`DRIVER: picked up ${payload.orderId}`)
-//         event.emit('in-transit',payload)
-//     },1000)
-//     setTimeout(()=>{
-//         console.log(`DRIVER: delivered ${payload.orderId}`)
-//         event.emit('delivered',payload)
-//     },3000)
-// }
 
 
 function pickupHandler(payload){
@@ -35,3 +22,16 @@ function pickupHandler(payload){
         capsConnection.emit('delivered',payload)
     },3000)
 }
+
+// event.on('pickup',pickup)
+// function pickup(payload){
+//     setTimeout(()=>{
+//         console.log(`DRIVER: picked up ${payload.orderId}`)
+//         event.emit('in-transit',payload)
+//     },1000)
+//     setTimeout(()=>{
+//         console.log(`DRIVER: delivered ${payload.orderId}`)
+//         event.emit('delivered',payload)
+//     },3000)
+// }
+
