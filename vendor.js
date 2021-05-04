@@ -4,20 +4,32 @@ const faker = require('faker')
 
 const event = require('./event.js')
 
-event.on('delivered',thanks)
+const io = require('socket.io-client')
+const HOST = process.env.HOST || 'http://localhost:3000'
+
+const capsConnection = io.connect(`${HOST}/caps`)
+
+capsConnection.on('delivered',thanksHandler)
 
 
-function thanks(payload){
-    console.log(`VENDOR: THANK YOU FOR DELIVERING ${payload.orderId}`)
+
+
+
+// event.on('delivered',thanks)
+
+
+function thanksHandler(payload){
+    console.log(`thank you for delivering ${payload.orderId}`)
 }
 
 setInterval(()=>{
     let newOrder = {
-        storeName: 'Mugs',
+        store:'Random',
         orderId: faker.datatype.uuid(),
         customerName:faker.name.findName(),
         productName:faker.commerce.productName(),
         address:faker.address.streetAddress()
     }
-    event.emit('pickup',newOrder)
+    // event.emit('pickup',newOrder)
+    capsConnection.emit('pickup',newOrder)
 },5000)
