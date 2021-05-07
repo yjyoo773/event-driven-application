@@ -7,14 +7,14 @@ const { thanksHandler } = require("./vendor-handler.js");
 const HOST = process.env.HOST || "http://localhost:3000";
 const capsConnection = io.connect(`${HOST}/caps`);
 
-// const store = "fake store";
-const store = process.argv.splice(2)[0]
+const store = "acme-widgets";
+// const store = process.argv.splice(2)[0]
 
 capsConnection.emit("join", store);
-capsConnection.emit('getAll')
+capsConnection.emit('getAll',store)
 capsConnection.on('message',msg =>{
   console.log('messages: ',msg.payload)
-  capsConnection.emit('received',msg)
+  capsConnection.emit('received',msg.payload)
 })
 capsConnection.on("delivered", thanksHandler);
 
