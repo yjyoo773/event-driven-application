@@ -13,11 +13,15 @@ const store = "1-206-flowers";
 capsConnection.emit("join", store);
 capsConnection.emit('getAll',store)
 capsConnection.on('message',msg =>{
-  console.log('messages: ',msg.payload)
-  capsConnection.emit('received',msg.payload)
+  console.log('messages: ',msg.payload.payload)
+  capsConnection.emit('received',msg.payload.payload)
 })
-capsConnection.on("delivered", thanksHandler);
+capsConnection.on('delivered',thanksHandler)
+capsConnection.on("delivered",(msg)=>{
+  capsConnection.emit('received',msg)
+})
 
+// capsConnection.on("delivered", thanksHandler);
 // setInterval(() => {
 //   let newOrder = {
 //     store: store,

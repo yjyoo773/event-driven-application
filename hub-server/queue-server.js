@@ -23,10 +23,9 @@ caps.on("connection", (socket) => {
 
   socket.on("received", (payload) => {
 
-    let storeName = payload.payload.store
-    let orderId = payload.payload.orderId
-    delete queue[storeName][orderId];
-    console.log('from receive',queue)
+    let storeName = payload.store
+    let orderID = payload.orderID
+    delete queue[storeName][orderID];
 });
 
   socket.on("getAll", (payload) => {
@@ -50,9 +49,8 @@ caps.on("connection", (socket) => {
   socket.on("delivered", (payload) => {
     logger("delivered", payload);
     let storeName = payload.store
-    let orderId = payload.orderId
-    queue[storeName][orderId] = { payload };
-    console.log('queue',queue)
+    let orderID = payload.orderID
+    queue[storeName][orderID] = { payload };
     caps.to(storeName).emit("delivered", payload);
   });
 });
